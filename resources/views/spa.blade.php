@@ -10,15 +10,14 @@
         <div class="col"></div>
         <div class="col">
 
-                <div class="card" style="width: 18rem;">
-                        <video id="video"  class="align-middle" autoplay></video>
-                        <div class="card-body">
-                                <button id="snap">Registre</button>
+                <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                          <h1 class="display-4 align-middle">Registre o pneu!</h1>
+                          <video id="video"  class="align-middle" autoplay></video> <button id="snap">Registre</button>
                         </div>
                       </div>
 
-                
-                
+                      
         </div>
         <div class="col"></div>
 </div>
