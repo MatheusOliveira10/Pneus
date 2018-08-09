@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('spa');
-});
+Route::get('/', 'TyreController@create');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('tyres', 'TyreController')->except('create');

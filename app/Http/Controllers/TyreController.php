@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Tyre;
+use App\Medpneus;
 use Illuminate\Http\Request;
+use Image;
 
 class TyreController extends Controller
 {
@@ -24,7 +26,8 @@ class TyreController extends Controller
      */
     public function create()
     {
-        //
+        $medpneus = Medpneus::all();
+        return view('spa2', compact('medpneus'));
     }
 
     /**
@@ -35,7 +38,16 @@ class TyreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tyre = new Tyre();
+        $tyre->medpneu_id = $request->medpneus;
+        $encodedData = $request->foto;
+        $binaryData = base64_decode($encodedData);
+        Image::make($encodedData)->save( public_path('uploads/' . $request->medpneus . '.jpg') );
+        $tyre->foto = $request->medpneus . '.jpg';
+        $tyre->save();
+        $medpneus = Medpneus::all();
+        return view('spa2', compact('medpneus'));
+
     }
 
     /**

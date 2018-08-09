@@ -1,4 +1,4 @@
-<html lang="{{ app()->getLocale() }}">
+<html lang="pt-br">
     <head>
         @include('partials._head')
     </head>

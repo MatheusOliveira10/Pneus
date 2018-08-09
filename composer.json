@@ -11,7 +11,9 @@
         "laravel/tinker": "^1.0",
         "mike42/escpos-php": "^2.0",
         "robloach/component-installer": "^0.2.3",
-        "select2/select2": "^4.0"
+        "select2/select2": "^4.0",
+        "intervention/image": "^2.3",
+        "laravelcollective/html": "^5.4.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

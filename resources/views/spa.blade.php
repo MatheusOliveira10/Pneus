@@ -13,7 +13,8 @@
                 <div class="jumbotron jumbotron-fluid">
                         <div class="container">
                           <h1 class="display-4 align-middle">Registre o pneu!</h1>
-                          <video id="video"  class="align-middle" autoplay></video> <button id="snap">Registre</button>
+                            <video id="video"  class="align-middle" autoplay></video>
+                            <button id="snap">Registre</button>
                         </div>
                       </div>
 
