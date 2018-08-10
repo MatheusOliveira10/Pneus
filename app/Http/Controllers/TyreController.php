@@ -6,6 +6,7 @@ use App\Tyre;
 use App\MedTyre;
 use Illuminate\Http\Request;
 use Image;
+use DB;
 
 class TyreController extends Controller
 {
@@ -42,10 +43,14 @@ class TyreController extends Controller
         $tyre = new Tyre();
         $tyre->medtyre_id = $request->medpneus;
         $medpneu = MedTyre::find($request->medpneus);
-        //dd($request->medpneus);
-        $qtd = Tyre::all()->where('medpneu_id', '=', $request->medpneus)->count();
-        $soma = $qtd+1;
-        $tyre->cod = $medpneu->abbr . '_' . $soma;
+        $comps = MedTyre::all()->where('abbr', '=', $medpneu->abbr);
+        $soma = 0;
+        foreach($comps as $comp)
+        {
+            $qtd = DB::table('tyres')->where('medtyre_id', $comp->id)->count();
+            $soma += $qtd;
+        }
+        $tyre->cod = $medpneu->abbr . '_' . ++$soma;
         $fotoCripto = $request->foto;
         Image::make($fotoCripto)->save( public_path('uploads/' . $tyre->cod . '.jpg') );
         $tyre->foto = $tyre->cod . '.jpg';
