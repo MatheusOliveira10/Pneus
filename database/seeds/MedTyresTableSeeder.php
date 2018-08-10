@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Medpneus;
+use App\MedTyre;
 
-class MedpneusTableSeeder extends Seeder
+class MedTyresTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,13 +12,14 @@ class MedpneusTableSeeder extends Seeder
      */
     public function run()
     {
-        $json = File::get("public/js/medpneus.json");
+        $json = File::get("public/js/medtyres.json");
         $data = json_decode($json);
         foreach ($data as $item)
         {
-            Medpneus::create(array(
+            MedTyre::create(array(
                 'id' => $item->id,
-                'name' => $item->name
+                'name' => $item->name,
+                'abbr' => $item->abbr
             ));
         }
     }

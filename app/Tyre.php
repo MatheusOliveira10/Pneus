@@ -8,6 +8,6 @@ class Tyre extends Model
 {
     public function tyre()
     {
-        return $this->belongsTo('App\Medpneus');
+        return $this->belongsTo('App\MedTyre');
     }
 }

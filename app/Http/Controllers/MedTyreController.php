@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tyre;
 use App\MedTyre;
 use Illuminate\Http\Request;
-use Image;
 
-class TyreController extends Controller
+class MedTyreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +24,7 @@ class TyreController extends Controller
      */
     public function create()
     {
-        $medtyres = MedTyres::all();
-        return view('spa2', compact('medtyres'));
+        //
     }
 
     /**
@@ -38,29 +35,16 @@ class TyreController extends Controller
      */
     public function store(Request $request)
     {
-        $medpneus = MedTyre::all();
-        $tyre = new Tyre();
-        $tyre->medtyre_id = $request->medpneus;
-        $medpneu = MedTyre::find($request->medpneus);
-        //dd($request->medpneus);
-        $qtd = Tyre::all()->where('medpneu_id', '=', $request->medpneus)->count();
-        $soma = $qtd+1;
-        $tyre->cod = $medpneu->abbr . '_' . $soma;
-        $fotoCripto = $request->foto;
-        Image::make($fotoCripto)->save( public_path('uploads/' . $tyre->cod . '.jpg') );
-        $tyre->foto = $tyre->cod . '.jpg';
-        $tyre->save();
-        return view('spa2', compact('medpneus'));
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tyre  $tyre
+     * @param  \App\MedTyre  $medTyre
      * @return \Illuminate\Http\Response
      */
-    public function show(Tyre $tyre)
+    public function show(MedTyre $medTyre)
     {
         //
     }
@@ -68,10 +52,10 @@ class TyreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tyre  $tyre
+     * @param  \App\MedTyre  $medTyre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tyre $tyre)
+    public function edit(MedTyre $medTyre)
     {
         //
     }
@@ -80,10 +64,10 @@ class TyreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tyre  $tyre
+     * @param  \App\MedTyre  $medTyre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tyre $tyre)
+    public function update(Request $request, MedTyre $medTyre)
     {
         //
     }
@@ -91,10 +75,10 @@ class TyreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tyre  $tyre
+     * @param  \App\MedTyre  $medTyre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tyre $tyre)
+    public function destroy(MedTyre $medTyre)
     {
         //
     }

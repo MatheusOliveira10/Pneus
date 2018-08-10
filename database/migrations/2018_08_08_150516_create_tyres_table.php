@@ -15,8 +15,9 @@ class CreateTyresTable extends Migration
     {
         Schema::create('tyres', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('medpneu_id');
-            $table->foreign('medpneu_id')->references('id')->on('medpneus')->onDelete('cascade');
+            $table->unsignedInteger('medtyre_id');
+            $table->foreign('medtyre_id')->references('id')->on('med_tyres')->onDelete('cascade');
+            $table->string('cod')->unique();
             $table->string('foto');
             $table->timestamps();
         });

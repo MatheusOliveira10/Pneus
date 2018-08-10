@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Medpneus extends Model
+class MedTyre extends Model
 {
-    protected $table = 'medpneus';
-
-    public function Medpneus()
+    public function MedTyres()
     {
         return $this->hasMany('App\Tyre');
     }
