@@ -27,7 +27,7 @@ class TyreController extends Controller
      */
     public function create()
     {
-        $medtyres = MedTyres::all();
+        $medtyres = MedTyre::all();
         return view('spa2', compact('medtyres'));
     }
 

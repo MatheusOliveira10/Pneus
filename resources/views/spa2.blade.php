@@ -11,7 +11,7 @@
                     <div class="container">
                         <h1 class="display-4 align-middle">Registre o pneumático!</h1>
                         <div id="mycamera" style="width:320px; height:240px;"></div>
-                        <a class="btn btn-primary" onclick="TakeSnap()" data-toggle="modal" data-target="#myModal">Tirar Foto</a>
+                        <button class="btn btn-primary mt-1" onclick="TakeSnap()" data-toggle="modal" data-target="#myModal">Tirar Foto</button>
                     </div>
                 </div>                      
             </div>
@@ -33,14 +33,18 @@
             <div id="myresult" style="width:320px; height:240px;"></div>
             <form action="{{route('tyres.store')}}" method="POST">
                 {{ csrf_field() }}
-                <label for="medpneus">Medida do Pneu:</label>
-                <select name="medpneus" id="medpneus" class="form-control">
-                    @foreach($medpneus as $medpneu)
-                        <option value="{{$medpneu->id}}">{{$medpneu->name}}</option>
-                    @endforeach
-                </select>
+                <div class="form-group">
+                    <label for="medpneus">Medida do Pneu:</label>
+                    <select name="medpneus" id="medpneus" class="js-example-basic-single">
+                        @foreach($medtyres as $medpneu)
+                            <option value="{{$medpneu->id}}">{{$medpneu->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <input type="hidden" id="foto" name="foto">
-                <button type="submit">Enviar</button>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>    
             </form>     
         </div>
         <div class="modal-footer">
@@ -53,6 +57,8 @@
 
 @section('scripts')
 {!! Html::script('js/webcam.js') !!}
+{!! Html::script('js/select2.js') !!}
+{!! Html::style('css/select2.css') !!}
 <script>
     Webcam.attach('#mycamera');
     function TakeSnap()
@@ -67,5 +73,7 @@
         });
     }
 </script>
-
+<script>
+    $('.js-example-basic-single').select2();
+</script>
 @endsection
