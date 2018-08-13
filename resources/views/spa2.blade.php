@@ -1,7 +1,5 @@
 @extends('main') @section('title', '| INICIO') @section('content')
-
 <div class="container">
-    <div class="row"></div>
     <div class="row">
         <div class="col"></div>
         <div class="col">
@@ -17,8 +15,8 @@
     </div>
 </div>
 
-<div id="myModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade" id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Informações</h5>
@@ -41,9 +39,9 @@
                     </div>
                     <input type="hidden" id="foto" name="foto">
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Enviar</button>
                     </div>
                 </form>
+                <button class="btn btn-primary" onclick="submit()">Enviar</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -51,18 +49,15 @@
         </div>
     </div>
 </div>
-@endsection @section('scripts') {!! Html::script('js/webcam.js') !!} {!! Html::script('js/select2.js') !!} {!! Html::style('css/select2.css') !!}
+@endsection
+@section('scripts')
+{!! Html::script('js/webcam.js') !!}
+{!! Html::script('js/select2.js') !!}
+{!! Html::script('js/main.js') !!}
+{!! Html::style('css/select2.css') !!}
 <script>
     Webcam.attach('#mycamera');
-    function TakeSnap() {
-        Webcam.snap(function (dataUri) {
-            document.getElementById('myresult').innerHTML = '<img src="' + dataUri + '"/>';
-
-            var raw_image_data = dataUri.replace(/^data\:image\/\w+\;base64\,/, '');
-
-            document.getElementById('foto').value = raw_image_data;
-        });
-    }
+    TakeSnap();
 </script>
 <script>
     $(document).ready(function () {
@@ -73,4 +68,5 @@
             if (e.which == 13) $('#takeSnap').click();
         });
     });
-</script> @endsection
+</script> 
+@endsection
