@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'TyreController@create');
+Route::get('/', 'TyreController@create')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 Route::resource('tyres', 'TyreController')->except('create');
