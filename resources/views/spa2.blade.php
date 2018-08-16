@@ -3,10 +3,26 @@
     <div class="row">
         <div class="col"></div>
         <div class="col">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-6 text-center">Registre o pneu!</h1>
+            <div class="card text-white bg-secondary">
+                <div class="card-body">
+                    <h1 class="display-6 text-center">Registro de Pneus</h1>
+                    <hr>
                     <div id="mycamera" style="width:640px; height:480px;"></div>
+                    <form action="{{route('tyres.store')}}" method="POST">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label class="mt-1" for="medpneus">Medida do Pneu:</label>
+                            <select name="medpneus" id="medpneus" class="js-example-basic-single js-states form-control">
+                                @foreach($medpneus as $medpneu)
+                                <option value="{{$medpneu->id}}">{{$medpneu->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <input type="hidden" id="foto" name="foto">
+                        <div class="form-group">
+                        </div>
+                    </form>
+    
                     <button class="btn btn-primary mt-1" id="takeSnap" onclick="TakeSnap()" data-toggle="modal" data-target="#myModal">Tirar Foto</button>
                 </div>
             </div>
@@ -27,21 +43,7 @@
             <div class="modal-body">
                 <label for="myresult">Foto:</label>
                 <div id="myresult" style="width:640px; height:480px;"></div>
-                <form action="{{route('tyres.store')}}" method="POST">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="medpneus">Medida do Pneu:</label>
-                        <select name="medpneus" id="medpneus" class="js-example-basic-single js-states form-control">
-                            @foreach($medpneus as $medpneu)
-                            <option value="{{$medpneu->id}}">{{$medpneu->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <input type="hidden" id="foto" name="foto">
-                    <div class="form-group">
-                    </div>
-                </form>
-                <button class="btn btn-primary" onclick="submit()">Enviar</button>
+                <button class="btn btn-primary mt-2" onclick="submit()">Enviar</button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -57,13 +59,10 @@
 {!! Html::style('css/select2.css') !!}
 <script>
     Webcam.attach('#mycamera');
-    TakeSnap();
 </script>
 <script>
     $(document).ready(function () {
-        $('#medpneus').select2({
-            dropdownParent: $('#myModal')
-        });
+        $('#medpneus').select2();
         $(document).keypress(function (e) {
             if (e.which == 13) $('#takeSnap').click();
         });
