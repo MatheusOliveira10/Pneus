@@ -19,6 +19,7 @@ class MedTyresTableSeeder extends Seeder
             MedTyre::create(array(
                 'id' => $item->id,
                 'name' => $item->name,
+                'type' => $item->type,
                 'abbr' => $item->abbr
             ));
         }

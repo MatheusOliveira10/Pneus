@@ -7,6 +7,18 @@ function TakeSnap() {
         document.getElementById('foto').value = raw_image_data;
     });
 }
+
+function showCamera(){
+  Webcam.reset();
+  Webcam.attach('#mycamera');
+  document.getElementById("takeSnap").disabled = false;
+}
+
+function hideCamera(){
+  Webcam.reset();
+  document.getElementById("takeSnap").disabled = true;
+}
+
  function submit()
  {
     var medtyre = $('#medpneus').val();

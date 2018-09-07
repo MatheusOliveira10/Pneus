@@ -22,42 +22,52 @@
                         <div class="form-group">
                         </div>
                     </form>
-    
-                    <button class="btn btn-primary mt-1" id="takeSnap" onclick="TakeSnap()" data-toggle="modal" data-target="#myModal">Tirar Foto</button>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <button class="btn btn-primary mt-1" id="takeSnap" onclick="TakeSnap()" data-toggle="modal" data-target="#myModal">Tirar
+                                Foto
+                            </button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-success mt-1" id="showCamera" onclick="showCamera()">Show</button>
+                            <button class="btn btn-warning mt-1" id="hideCamera" onclick="hideCamera()">Hide</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col"></div>
     </div>
-</div>
 
-<div class="modal fade" id="myModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Informações</h5>
-                <button type="button" action="{{route('home')}}" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <label for="myresult">Foto:</label>
-                <div id="myresult" style="width:640px; height:480px;"></div>
-                <button class="btn btn-primary mt-2" onclick="submit()">Enviar</button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+    <div class="modal fade" id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Imagem:</h5>
+                    <button type="button" action="{{route('home')}}" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10">
+                            <label for="myresult"></label>
+                            <div id="myresult" style="width:640px; height:480px;"></div>
+                            <button class="btn btn-primary mt-2" onclick="submit()">Enviar</button>
+                            <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">Fechar</button>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
-{!! Html::script('js/webcam.js') !!}
-{!! Html::script('js/select2.js') !!}
-{!! Html::script('js/main.js') !!}
-{!! Html::style('css/select2.css') !!}
+@endsection @section('scripts') {!! Html::script('js/webcam.js') !!} {!! Html::script('js/select2.js') !!} {!! Html::script('js/main.js')
+!!} {!! Html::style('css/select2.css') !!}
 <script>
+    Webcam.reset();
     Webcam.attach('#mycamera');
 </script>
 <script>
@@ -67,5 +77,4 @@
             if (e.which == 13) $('#takeSnap').click();
         });
     });
-</script> 
-@endsection
+</script> @endsection

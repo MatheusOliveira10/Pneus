@@ -16,6 +16,7 @@ class CreateMedTyresTable extends Migration
         Schema::create('med_tyres', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('type')->nullable();
             $table->string('abbr');
             $table->timestamps();
         });
