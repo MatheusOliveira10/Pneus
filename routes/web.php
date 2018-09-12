@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'TyreController@create')->name('home');
+Route::get('/spa', 'TyreController@teste');
 
 Auth::routes();
 

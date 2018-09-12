@@ -7,8 +7,7 @@ use App\MedTyre;
 use Image;
 use DB;
 use Illuminate\Http\Request;
-use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
-use Mike42\Escpos\Printer;
+use App\ZebraPrinter;
 
 class TyreControllerApi extends Controller
 {
@@ -29,7 +28,18 @@ class TyreControllerApi extends Controller
         $tyre->foto = $tyre->cod . '.jpg';
         $tyre->save();
 
-        print($tyre);
+        $hostPrinter = "\\localhost\Elgin";
+        $speedPrinter = 4;
+        $darknessPrint = 2;
+        $labelSize = array(300,10);
+        $referencePoint = array(450,150);
+
+        $z = new ZebraPrinter($hostPrinter, $speedPrinter, $darknessPrint, $labelSize, $referencePoint);
+       
+        $z->setBarcode(1, 344, 80, $tyre->cod);
+        $z->writeLabel($tyre->cod,344,30,4);
+        $z->setLabelCopies(1);
+        $z->print2zebra();
 
         return 200;
     }
@@ -48,16 +58,5 @@ class TyreControllerApi extends Controller
        // dd($array_splited);
         $array_dump = $array_splited[0].$array_splited[1].$array_splited[3].$array_splited[4].$array_splited[8].$array_splited[9].$array_splited[11].$array_splited[12].$array_splited[14].$array_splited[15].$array_splited[17].$array_splited[18];
         return $array_dump;
-    }
-
-    public function print($tyre)
-    {
-        $connector = new WindowsPrintConnector("<nome da impressora>");
-        $printer = new Printer($connector);
-        $printer -> text($tyre->cod . "\n");
-        $printer -> cut();
-        $printer -> close();
-
-        return 200;
     }
 }

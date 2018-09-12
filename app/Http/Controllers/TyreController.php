@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tyre;
 use App\MedTyre;
+use App\ZebraPrinter;
 use Illuminate\Http\Request;
 use Image;
 use DB;
@@ -15,9 +16,21 @@ class TyreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function teste()
     {
-        //
+        $hostPrinter = "\\localhost\Elgin";
+        $speedPrinter = 4;
+        $darknessPrint = 2;
+        $labelSize = array(300,10);
+        $referencePoint = array(223,15);
+
+        $z = new ZebraPrinter($hostPrinter, $speedPrinter, $darknessPrint, $labelSize, $referencePoint);
+       
+        $z->setBarcode(1, 344, 80, "ContentBarCode"); #1 -> cod128
+        $z->writeLabel("Hello World",344,30,4);
+        $z->setLabelCopies(1);
+        $z->print2zebra();
+
     }
 
     /**
