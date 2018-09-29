@@ -14,7 +14,7 @@
                             <label class="mt-1" for="medpneus">Medida do Pneu:</label>
                             <select name="medpneus" id="medpneus" class="js-example-basic-single js-states form-control">
                                 @foreach($medpneus as $medpneu)
-                                <option value="{{$medpneu->id}}">{{$medpneu->name}}</option>
+                            <option value="{{$medpneu->id}}">{{$medpneu->name}} - {{$medpneu->type}}</option>
                                 @endforeach
                             </select>
                         </div>
