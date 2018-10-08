@@ -17,9 +17,7 @@ class TyreControllerApi extends Controller
         $tyre = new Tyre();
         $tyre->medtyre_id = $request->medpneus;
         $medpneu = MedTyre::find($request->medpneus);
-        //dd($medpneu);
-        $tyre->cod = $medpneu->abbr . '_' . $this->countPneus() . $this->timestamps(date('d-m-Y'));
-        dd($tyre->cod);
+        $tyre->cod = $medpneu->abbr . '_' . $this->countPneus() . $this->timestamps(date('d.m.Y'));
         $fotoCripto = $request->foto;
         if(is_dir("pneus")){
         Image::make($fotoCripto)->save( public_path('pneus/' . $tyre->cod . '.jpg') );

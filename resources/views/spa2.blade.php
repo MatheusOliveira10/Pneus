@@ -77,4 +77,5 @@
             if (e.which == 13) $('#takeSnap').click();
         });
     });
-</script> @endsection
+</script> 
+@endsection
