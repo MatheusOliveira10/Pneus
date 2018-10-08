@@ -18,12 +18,14 @@ class TyreControllerApi extends Controller
         $tyre->medtyre_id = $request->medpneus;
         $medpneu = MedTyre::find($request->medpneus);
         //dd($medpneu);
-        $tyre->cod = $medpneu->abbr . '_' . $this->countPneus() . $this->timestamps(date('d-m-Y H:i:s'));
+        $tyre->cod = $medpneu->abbr . '_' . $this->countPneus() . $this->timestamps(date('d-m-Y'));
+        dd($tyre->cod);
         $fotoCripto = $request->foto;
         if(is_dir("pneus")){
         Image::make($fotoCripto)->save( public_path('pneus/' . $tyre->cod . '.jpg') );
         }else{
             mkdir("pneus", 0700);
+            Image::make($fotoCripto)->save( public_path('pneus/' . $tyre->cod . '.jpg') );
         }
         $tyre->foto = $tyre->cod . '.jpg';
         $tyre->save();
@@ -56,7 +58,7 @@ class TyreControllerApi extends Controller
    public function timestamps($timestamp){
         $array_splited = str_split($timestamp);
        // dd($array_splited);
-        $array_dump = $array_splited[0].$array_splited[1].$array_splited[3].$array_splited[4].$array_splited[8].$array_splited[9].$array_splited[11].$array_splited[12].$array_splited[14].$array_splited[15].$array_splited[17].$array_splited[18];
+        $array_dump = $array_splited[0].$array_splited[1].$array_splited[3].$array_splited[4].$array_splited[8].$array_splited[9];
         return $array_dump;
-    }
+    }   
 }

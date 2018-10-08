@@ -44,6 +44,13 @@ class TyreController extends Controller
         return view('spa2', compact('medpneus'));
     }
 
+    public function view()
+    {
+        $pneus = Tyre::all();
+        $medtyres = MedTyre::all();
+        return view('viewtyres',compact('pneus','medtyres'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -93,7 +100,7 @@ class TyreController extends Controller
      */
     public function show(Tyre $tyre)
     {
-        //
+//
     }
 
     /**
