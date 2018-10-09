@@ -7,6 +7,8 @@
 <title>Pneus @yield('title')</title>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <link rel="stylesheet" href="css/bootstrap.css">
 
 @yield('stylesheets')
