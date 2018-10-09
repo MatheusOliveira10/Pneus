@@ -58,5 +58,22 @@ class TyreControllerApi extends Controller
        // dd($array_splited);
         $array_dump = $array_splited[0].$array_splited[1].$array_splited[3].$array_splited[4].$array_splited[8].$array_splited[9];
         return $array_dump;
-    }   
+    }
+
+    public function print(Request $request){
+        $hostPrinter = "\\localhost\Elgin";
+        $speedPrinter = 4;
+        $darknessPrint = 2;
+        $labelSize = array(300,10);
+        $referencePoint = array(450,150);
+
+        $z = new ZebraPrinter($hostPrinter, $speedPrinter, $darknessPrint, $labelSize, $referencePoint);
+
+        $z->setBarcode(1, 344, 80, $request->cod);
+        $z->writeLabel($request->cod,344,30,4);
+        $z->setLabelCopies(1);
+        $z->print2zebra();
+
+        return 200;
+    }
 }

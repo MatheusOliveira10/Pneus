@@ -98,9 +98,10 @@ class TyreController extends Controller
      * @param  \App\Tyre  $tyre
      * @return \Illuminate\Http\Response
      */
-    public function show(Tyre $tyre)
+    public function show($id)
     {
-//
+        $pneu = Tyre::find($id)->with('medtyre')->first();
+        return view("pneus.show", compact("pneu"));
     }
 
     /**

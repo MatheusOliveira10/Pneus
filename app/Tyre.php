@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tyre extends Model
 {
-    public function tyre()
+    public function medtyre()
     {
         return $this->belongsTo('App\MedTyre');
     }

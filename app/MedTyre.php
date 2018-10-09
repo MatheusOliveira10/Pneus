@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedTyre extends Model
 {
-    public function MedTyres()
+    public function tyres()
     {
         return $this->hasMany('App\Tyre');
     }

@@ -1,5 +1,5 @@
-<?php
 
+<?php
 use Illuminate\Http\Request;
 
 /*
@@ -15,3 +15,4 @@ use Illuminate\Http\Request;
 
 
 Route::post('/submit', 'TyreControllerApi@store');
+Route::post('/print', 'TyreControllerApi@print')->name('tyres.print');
