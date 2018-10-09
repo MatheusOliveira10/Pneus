@@ -1,12 +1,15 @@
 @extends('main')
 @section('title', '| INICIO')
 @section('content')
-            <div class="card">
-                <div class="card-body">
-                    <table id="pneus" class="table table-hover">
+    <div class="card">
+        <h2 class="card-header text-center">Pneus Cadastrados</h2>
+
+        <div class="card-body">
+
+            <table id="pneus" class="table table-hover">
                         <thead>
-                            <th>Foto</th>
                             <th>Id</th>
+                            <th>Foto</th>
                             <th>Medida</th>
                             <th>Código</th>
                             <th>Data de Registro</th>
@@ -15,8 +18,8 @@
                         <tbody>
                             @foreach($pneus as $pneu)
                             <tr>
-                                <td scope="col">{{$pneu->foto}}</td>
                                 <td>{{$pneu->id}}</td>
+                                <td scope="col">{{$pneu->foto}}</td>
                                 <td>@foreach($medtyres as $medtyre) @if ($medtyre->id === $pneu->medtyre_id)
                                     {{$medtyre->name}} @endif @endforeach</td>
                                 <td>{{$pneu->cod}}</td>

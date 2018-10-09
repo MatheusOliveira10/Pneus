@@ -3,7 +3,7 @@
 #IF IT'S COMPLICATED TO UNDERSTAND HOW THE EPL LANGUAGE WORKS, DOWNLOAD THE ZEBRADESIGNER, CREATE A LABEL AND EXPORT THE READY CODE.
 namespace App;
 
-class ZebraPrinter2{
+class ZebraPrinter{
 	
 	public $host;	
 	public $storeLabel = array();
