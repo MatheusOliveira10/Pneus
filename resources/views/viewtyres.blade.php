@@ -11,7 +11,8 @@
 	                <th>Medida</th>
 	                <th>Código</th>
 	                <th>Data de Registro</th>
-	                <th>Horário de Registro</th>
+                    <th>Horário de Registro</th>
+                    <th></th>
 	            </thead>
 	            <tbody>
 	                @foreach($pneus as $pneu)
@@ -23,6 +24,9 @@
                                 <td>{{$pneu->cod}}</td>
                                 <td>{{$pneu->created_at->toDateString()}}</td>
                                 <td>{{$pneu->created_at->toTimeString()}}</td>
+                                <td>
+                                   <a href="/tyres/{{$pneu->id}}"> <button class="btn-dark">Ver</button> </a>
+                                </td>
                             </tr>
                                 @endforeach
                         </tbody>

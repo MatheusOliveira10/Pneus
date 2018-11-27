@@ -100,7 +100,7 @@ class TyreController extends Controller
      */
     public function show($id)
     {
-        $pneu = Tyre::find($id)->with('medtyre')->first();
+        $pneu = Tyre::with('medtyre')->where('id', $id)->first();
         return view("pneus.show", compact("pneu"));
     }
 

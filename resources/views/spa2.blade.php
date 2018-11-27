@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h1 class="display-6 text-center">Registro de Pneus</h1>
                     <hr>
-                    <div id="mycamera" style="width:640px; height:480px;"></div>
+                    <div id="mycamera" style="width:960px; height:540px;"></div>
                     <form action="{{route('tyres.store')}}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
@@ -28,9 +28,9 @@
                                 Foto
                             </button>
                         </div>
-                        <div class="col-sm-3">
-                            <button class="btn btn-success mt-1" id="showCamera" onclick="showCamera()">Show</button>
-                            <button class="btn btn-warning mt-1" id="hideCamera" onclick="hideCamera()">Hide</button>
+                        <div class="col-md-3 right">
+                            <button class="btn btn-success mt-1" id="showCamera" onclick="showCamera()">Mostrar</button>
+                            <button class="btn btn-warning mt-1" id="hideCamera" onclick="hideCamera()">Esconder</button>
                         </div>
                     </div>
                 </div>
@@ -50,14 +50,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-10">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-12">
                             <label for="myresult"></label>
-                            <div id="myresult" style="width:640px; height:480px;"></div>
-                            <button class="btn btn-primary mt-2" onclick="submit()">Enviar</button>
+                            <div id="myresult"></div>
+                            <button class="btn btn-primary mt-2" id="submitt" onclick="submit()">Enviar</button>
                             <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">Fechar</button>
                         </div>
-                        <div class="col-sm-1"></div>
+                        <div class="col-md-1"></div>
                     </div>
                 </div>
             </div>

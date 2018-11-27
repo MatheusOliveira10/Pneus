@@ -28,16 +28,17 @@ class TyreControllerApi extends Controller
         $tyre->foto = $tyre->cod . '.jpg';
         $tyre->save();
 
-        $hostPrinter = "\\localhost\Elgin";
+        $hostPrinter = "\\localhost\Elginl42";
         $speedPrinter = 4;
-        $darknessPrint = 2;
+        $darknessPrint = 3;
         $labelSize = array(300,10);
-        $referencePoint = array(450,150);
+        $referencePoint = array(200,15);
 
         $z = new ZebraPrinter($hostPrinter, $speedPrinter, $darknessPrint, $labelSize, $referencePoint);
-       
-        $z->setBarcode(1, 344, 80, $tyre->cod);
-        $z->writeLabel($tyre->cod,344,30,4);
+        $z->setBarcode(2, 580,70, $tyre->cod);
+        $z->writeLabel($tyre->cod,580,20,4);
+        $z->setBarcode(2, 200,70, $tyre->cod);
+        $z->writeLabel($tyre->cod,200,20,4);
         $z->setLabelCopies(1);
         $z->print2zebra();
 
