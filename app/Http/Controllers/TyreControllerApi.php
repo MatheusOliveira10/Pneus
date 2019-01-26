@@ -28,7 +28,7 @@ class TyreControllerApi extends Controller
         $tyre->foto = $tyre->cod . '.jpg';
         $tyre->save();
 
-        $hostPrinter = "\\localhost\Elginl42";
+        $hostPrinter = "\\localhost\Elgin";
         $speedPrinter = 4;
         $darknessPrint = 3;
         $labelSize = array(300,10);

@@ -3,7 +3,7 @@
 @section('content')
 		<input type="hidden" id="cod" name="cod" value="{{$pneu->cod}}">
 	<div class="card">
-			<a href="/view/" aria-label="Left Align">
+			<a href="/view/" aria-label="align-center">
 					<button type="button" class="btn btn-default" aria-label="Left Align">
 							<span class="glyphicon glyphicon-arrow-left"></span>
 						  </button>
@@ -17,7 +17,7 @@
 				<li class="list-group-item"><b>Hora em que foi cadastrado: {{$pneu->created_at->toTimeString()}}</b></li>
 			</ul>
 			&nbsp;
-			<button id="btn" class="btn btn-block btn-primary" onclick="print()">Imprimir novamente</button>
+			<button id="btn" class="btn btn-block btn-primary" onclick="print({{$pneu}})">Imprimir novamente</button>
 		</div>
 	</div>
 @endsection

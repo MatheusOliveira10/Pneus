@@ -1,13 +1,12 @@
 @extends('main') @section('title', '| INICIO') @section('content')
 <div class="container">
     <div class="row">
-        <div class="col"></div>
         <div class="col">
-            <div class="card text-white bg-secondary">
+            <div class="card text-white bg-secondary" style="width:1340px; height:960px;">
                 <div class="card-body">
                     <h1 class="display-6 text-center">Registro de Pneus</h1>
                     <hr>
-                    <div id="mycamera" style="width:960px; height:540px;"></div>
+                    <div id="mycamera"></div>
                     <form action="{{route('tyres.store')}}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
@@ -49,25 +48,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-12">
                             <label for="myresult"></label>
                             <div id="myresult"></div>
                             <button class="btn btn-primary mt-2" id="submitt" onclick="submit()">Enviar</button>
                             <button type="button" class="btn btn-secondary mt-2" data-dismiss="modal">Fechar</button>
                         </div>
-                        <div class="col-md-1"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 @endsection @section('scripts') {!! Html::script('js/webcam.js') !!} {!! Html::script('js/select2.js') !!} {!! Html::script('js/main.js')
 !!} {!! Html::style('css/select2.css') !!}
 <script>
     Webcam.reset();
+    Webcam.set({
+		width: 1280,
+		height: 720,
+		dest_width: 800,
+		dest_height: 600,
+		image_format: 'jpeg',
+		jpeg_quality: 100,
+		fps: 60
+	});
     Webcam.attach('#mycamera');
 </script>
 <script>
