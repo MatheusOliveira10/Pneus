@@ -62,10 +62,10 @@
 <script>
     Webcam.reset();
     Webcam.set({
-		width: 1280,
-		height: 720,
-		dest_width: 800,
-		dest_height: 600,
+		width: 560,
+		height: 480,
+		dest_width: 560,
+		dest_height: 480,
 		image_format: 'jpeg',
 		jpeg_quality: 100,
 		fps: 60
