@@ -1,8 +1,7 @@
 @extends('main') @section('title', '| INICIO') @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card text-white bg-secondary" style="width:1340px; height:960px;">
+    <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12"  style="align-content:center;">
+            <div class="card text-white bg-secondary" style="width:100%; height:auto;">
                 <div class="card-body">
                     <h1 class="display-6 text-center">Registro de Pneus</h1>
                     <hr>
@@ -34,8 +33,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col"></div>
     </div>
 
     <div class="modal fade" id="myModal" class="modal" tabindex="-1" role="dialog">

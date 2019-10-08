@@ -18,3 +18,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('tyres', 'TyreController')->except('create');
+Route::get('/medtyres', 'MedTyreController@index')->name('medtyres');
+Route::get('/cadastMedidas','MedTyreController@create')->name('createMedidas');
+Route::post('/cadastMedidas','MedTyreController@store');
+Route::post('/reprint','TyreControllerApi@print')->name('reprint');

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\MedTyre;
+use App\Medidas;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class MedTyreController extends Controller
+class MedidasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class MedTyreController extends Controller
      */
     public function index()
     {
-        $medtyres = MedTyre::all();
-        return view('medtyres',compact('medtyres'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class MedTyreController extends Controller
      */
     public function create()
     {
-        return view('createMedidas');
+        //
     }
 
     /**
@@ -37,31 +35,16 @@ class MedTyreController extends Controller
      */
     public function store(Request $request)
     {
-        $medtyres = new MedTyre();
-        $medtyres->name = $request->nome;
-        $medtyres->type = $request->type;
-        $medtyres->abbr = 0;
-        $medtyres->save();
-        $lastID = DB::getPdo()->lastInsertId();
-        if($lastID < 10){
-            $medtyres->abbr = "00" . $lastID;
-        }else if($lastID < 100){
-            $medtyres->abbr = "0" . $lastID;
-        }else{
-            $medtyres->abbr = $lastID;
-        }
-        $medtyres->save();
-        $medtyres = MedTyre::All();
-        return view('medtyres',compact('medtyres'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\MedTyre  $medTyre
+     * @param  \App\Medidas  $medidas
      * @return \Illuminate\Http\Response
      */
-    public function show(MedTyre $medTyre)
+    public function show(Medidas $medidas)
     {
         //
     }
@@ -69,10 +52,10 @@ class MedTyreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\MedTyre  $medTyre
+     * @param  \App\Medidas  $medidas
      * @return \Illuminate\Http\Response
      */
-    public function edit(MedTyre $medTyre)
+    public function edit(Medidas $medidas)
     {
         //
     }
@@ -81,10 +64,10 @@ class MedTyreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\MedTyre  $medTyre
+     * @param  \App\Medidas  $medidas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MedTyre $medTyre)
+    public function update(Request $request, Medidas $medidas)
     {
         //
     }
@@ -92,10 +75,10 @@ class MedTyreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\MedTyre  $medTyre
+     * @param  \App\Medidas  $medidas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MedTyre $medTyre)
+    public function destroy(Medidas $medidas)
     {
         //
     }

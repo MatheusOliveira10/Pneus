@@ -8,6 +8,7 @@ use Image;
 use DB;
 use Illuminate\Http\Request;
 use App\ZebraPrinter;
+use Route;
 
 class TyreControllerApi extends Controller
 {
@@ -19,8 +20,8 @@ class TyreControllerApi extends Controller
         $medpneu = MedTyre::find($request->medpneus);
         $tyre->cod = $medpneu->abbr . '_' . $this->countPneus() . $this->timestamps(date('d.m.Y'));
         $fotoCripto = $request->foto;
-        $teste = "pneus\\" . $this->timestamps(date('d.m.Y')) . "\\" . "$medpneu->name" . "\\";
-        if(is_dir($teste)){
+        $teste = "pneus\\";
+        if(is_dir($teste)){ 
         Image::make($fotoCripto)->save( public_path($teste . $tyre->cod . '.jpg') );
         }else{
             mkdir($teste, 0700, true);
@@ -29,9 +30,9 @@ class TyreControllerApi extends Controller
         $tyre->foto = $tyre->cod . '.jpg';
         $tyre->save();
 
-        $hostPrinter = "\\localhost\Elgin";
-        $speedPrinter = 4;
-        $darknessPrint = 3;
+        $hostPrinter = "\\localhost\BTP-L42(U)";
+        $speedPrinter = 1;
+        $darknessPrint = 5;
         $labelSize = array(300,10);
         $referencePoint = array(200,15);
 
@@ -63,19 +64,20 @@ class TyreControllerApi extends Controller
     }
 
     public function print(Request $request){
-        $hostPrinter = "\\localhost\Elgin";
-        $speedPrinter = 4;
-        $darknessPrint = 2;
+        $hostPrinter = "\\localhost\BTP-L42(U)";
+        $speedPrinter = 1;
+        $darknessPrint = 5;
         $labelSize = array(300,10);
-        $referencePoint = array(450,150);
+        $referencePoint = array(200,15);
 
         $z = new ZebraPrinter($hostPrinter, $speedPrinter, $darknessPrint, $labelSize, $referencePoint);
-
-        $z->setBarcode(1, 344, 80, $request->cod);
-        $z->writeLabel($request->cod,344,30,4);
+        $z->setBarcode(2, 580,70, $request->cod);
+        $z->writeLabel($request->cod,580,20,4);
+        $z->setBarcode(2, 200,70, $request->cod);
+        $z->writeLabel($request->cod,200,20,4);
         $z->setLabelCopies(1);
         $z->print2zebra();
 
-        return 200;
+        return \Redirect::route('view');
     }
 }

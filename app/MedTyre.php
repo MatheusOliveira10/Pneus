@@ -10,4 +10,5 @@ class MedTyre extends Model
     {
         return $this->hasMany('App\Tyre');
     }
+    protected $fillable = ['name', 'type', 'abbr'];
 }

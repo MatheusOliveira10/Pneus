@@ -9,7 +9,7 @@
 						  </button>
 			</a>
 		<h2 class="card-header text-center">Código: {{$pneu->cod}}</h2>
-		<img class="card-img-top" src="../pneus/{{$pneu->foto}}">
+		<img class="card-img-top" src="\\{{public_path('pneus\\')}}{{$pneu->foto}}">
 		<div class="card-body">
 			<ul class="list-group">
 				<li class="list-group-item"><b>ID: {{$pneu->id}}</b></li>
@@ -17,7 +17,12 @@
 				<li class="list-group-item"><b>Hora em que foi cadastrado: {{$pneu->created_at->toTimeString()}}</b></li>
 			</ul>
 			&nbsp;
-			<button id="btn" class="btn btn-block btn-primary" onclick="print({{$pneu}})">Imprimir novamente</button>
+			<form method="post" action="{{url('/reprint')}}">
+			<input type="hidden" value="{{csrf_token()}}" name="_token" />
+			<input type="hidden" name="cod" value="{{$pneu->cod}}"/>
+			<input type="hidden" name="id" value="{{$pneu->id}}"/>
+			<button type="submit" class="btn btn-block btn-primary">Imprimir novamente</button>
+</form>
 		</div>
 	</div>
 @endsection

@@ -39,20 +39,3 @@ function hideCamera(){
         });
  }
 
-function print()
-{
-    var codigo = $('#cod').val();
-    $.ajax(
-        {
-            type: 'POST',
-            url: '/api/print',
-            data:
-                {
-                    cod: codigo,
-                },
-            success: function(submit)
-            {
-                console.log("Deu bom!")
-            },
-        });
-}
